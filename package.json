@@ -1,0 +1,31 @@
+{
+  "name": "@react-fe/core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "commit": "cz",
+    "build": "yarn lerna run build",
+    "dev": "yarn lerna run dev",
+    "publish": "yarn build && yarn lerna run publish"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "lerna": "^4.0.0",
+    "react": "^18.2.0",
+    "rollup": "^3.17.2",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^4.9.5"
+  },
+  "private": true
+}
