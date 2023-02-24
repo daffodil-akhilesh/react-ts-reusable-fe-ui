@@ -1,0 +1,11 @@
+{
+  "name": "svgicons",
+  "version": "1.0.0",
+  "description": "some svg icons",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "akhilesh.pandey@unthinkable.co",
+  "license": "ISC"
+}
