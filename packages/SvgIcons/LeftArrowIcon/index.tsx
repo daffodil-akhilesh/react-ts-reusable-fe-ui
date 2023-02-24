@@ -1,3 +1,5 @@
+import React from "react";
+
 interface LeftArrowIconProps {
   color?: string;
   height?: string;
