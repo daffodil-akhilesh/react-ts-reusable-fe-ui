@@ -1,6 +1,6 @@
 {
   "name": "@react-fe-core/fe-ui-core",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "main": "index.js",
   "license": "MIT",
   "workspaces": [
@@ -9,9 +9,9 @@
   "scripts": {
     "commit": "cz",
     "build": "yarn lerna run build --stream",
-    "clean:lib": "rm -r ./packages/**/lib",
+    "clean:js": "rm -r ./packages/**/js",
     "dev": "yarn lerna run dev",
-    "publish": "yarn build && yarn lerna publish --no-private"
+    "publish": "yarn clean:js && yarn build && yarn lerna publish --no-private"
   },
   "config": {
     "commitizen": {
