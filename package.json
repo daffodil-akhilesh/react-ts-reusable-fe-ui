@@ -1,6 +1,6 @@
 {
-  "name": "@react-fe/core",
-  "version": "1.0.0",
+  "name": "react-fe",
+  "version": "1.2.0",
   "main": "index.js",
   "license": "MIT",
   "workspaces": [
@@ -27,5 +27,5 @@
     "rollup-plugin-typescript2": "^0.34.1",
     "typescript": "^4.9.5"
   },
-  "private": true
+  "repository": "https://github.com/daffodil-akhilesh/react-ts-reusable-fe-ui.git"
 }
