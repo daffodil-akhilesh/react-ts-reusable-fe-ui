@@ -1,5 +1,5 @@
 {
-  "name": "svgicons",
+  "name": "@react-fe-core/svgicons",
   "version": "1.0.0",
   "description": "some svg icons",
   "main": "index.tsx",
