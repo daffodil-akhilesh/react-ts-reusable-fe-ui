@@ -12,6 +12,8 @@
     "build": "yarn lerna run build --stream",
     "clean:js": "rm -r ./packages/**/js",
     "dev": "yarn lerna run dev",
+    "storybook": "start-storybook -s ./.storybook/assets",
+    "build-storybook": "build-storybook -s ./.storybook/assets",
     "publish": "yarn clean:js && yarn build && yarn lerna publish --no-private"
   },
   "config": {
@@ -20,12 +22,17 @@
     }
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-viewport": "^6.5.16",
+    "@storybook/react": "^6.5.16",
     "@types/react": "^18.0.28",
+    "@types/storybook__react": "^5.2.1",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "lerna": "^4.0.0",
     "plop": "^3.1.2",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup": "^3.17.2",
     "rollup-plugin-typescript2": "^0.34.1",
     "typescript": "^4.9.5"
@@ -33,5 +40,6 @@
   "publishConfig": {
     "access": "public"
   },
+  "private": "true",
   "repository": "https://github.com/daffodil-akhilesh/react-ts-reusable-fe-ui.git"
 }
