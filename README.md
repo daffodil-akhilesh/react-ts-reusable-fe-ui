@@ -2,6 +2,10 @@
 ## Links
 1. https://javascript.plainenglish.io/managing-javascript-monorepos-with-lerna-building-a-react-icon-library-publishing-to-npm-70855bfb31d9
 
+# PLOP for creating basic package template
+## Links
+1. https://github.com/plopjs/plop
+
 
 # Scripts
 ## Build all js folder for all packages

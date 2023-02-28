@@ -24,6 +24,7 @@
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "lerna": "^4.0.0",
+    "plop": "^3.1.2",
     "react": "^18.2.0",
     "rollup": "^3.17.2",
     "rollup-plugin-typescript2": "^0.34.1",

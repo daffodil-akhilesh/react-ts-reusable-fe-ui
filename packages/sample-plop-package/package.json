@@ -1,0 +1,16 @@
+{
+  "name": "@react-fe-core/sample-plop-package",
+  "version": "1.0.0",
+  "description": "sample-plop-package",
+  "main": "index.tsx",
+  "scripts": {
+    "build": "npm run build-ts",
+    "build-ts": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "akhilesh.pandey@unthinkable.co",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}
