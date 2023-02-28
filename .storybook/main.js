@@ -8,7 +8,7 @@ module.exports = {
     ...options,
   }),
   framework: '@storybook/react',
-  stories: ['../stories/*.stories.(ts|md)x'],
+  stories: ['../stories/**/*.stories.(ts|md)x'],
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias = {
       ...config.resolve.alias,

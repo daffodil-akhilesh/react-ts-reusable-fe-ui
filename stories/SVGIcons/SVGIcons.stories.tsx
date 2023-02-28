@@ -1,5 +1,5 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import LeftArrowSVGComp from "../packages/SvgIcons/src/LeftArrowIcon";
+import LeftArrowSVGComp from "../../packages/SvgIcons/src/LeftArrowIcon";
 
 
 export default {
