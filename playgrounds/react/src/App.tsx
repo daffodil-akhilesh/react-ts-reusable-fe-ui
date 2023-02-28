@@ -1,5 +1,5 @@
 import "./App.css";
-import LeftArrowSVGIcon from "../../../packages/SvgIcons/LeftArrowIcon";
+import LeftArrowSVGIcon from "../../../packages/SvgIcons/src/LeftArrowIcon";
 
 export default function App() {
   return (

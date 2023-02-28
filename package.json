@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "commit": "cz",
-    "build": "yarn lerna run build",
+    "build": "yarn lerna run build --stream",
+    "clean:lib": "rm -r ./packages/**/lib",
     "dev": "yarn lerna run dev",
     "publish": "yarn build && yarn lerna publish --no-private"
   },
