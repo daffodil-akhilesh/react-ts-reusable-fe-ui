@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "commit": "cz",
+    "bootstrap": "lerna bootstrap --no-ci && rm -r packages/**/package-lock.json",
     "build": "yarn lerna run build --stream",
     "clean:js": "rm -r ./packages/**/js",
     "dev": "yarn lerna run dev",
