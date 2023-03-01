@@ -47,7 +47,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "private": "true",
   "repository": "https://github.com/daffodil-akhilesh/react-ts-reusable-fe-ui.git",
   "dependencies": {
     "react": "^18.2.0",

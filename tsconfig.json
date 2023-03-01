@@ -17,7 +17,7 @@
     "packages/*/lib",
     "**/*.story.tsx",
     "**/*.test.tsx",
-    "packages/*/__story__",
+    "packages/*/stories",
     "packages/*/src/__test__",
   ]
 }
