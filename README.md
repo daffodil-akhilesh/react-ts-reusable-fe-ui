@@ -1,3 +1,14 @@
+# About
+1. This is a base project based on React Reusable components which supports 
+2. typescript
+3. styling through styled-components 
+4. components isolation build preview with storybook
+5. publishing monorepo through lerna and conventional commits
+6. New package creation through plop
+7. js build support for js projects
+8. playground support for os where storybook not supported.
+
+
 # LERNA Monorepo Config
 ## Links
 1. https://javascript.plainenglish.io/managing-javascript-monorepos-with-lerna-building-a-react-icon-library-publishing-to-npm-70855bfb31d9
