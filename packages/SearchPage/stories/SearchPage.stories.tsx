@@ -55,6 +55,7 @@ PrimaryTableItems.args = {
     timezone: "IST"
   }],
   columns: ['Details', 'Phone Number', 'Country', 'Zone'],
+  limit: 3,
 }
 
 PrimarySearchBar.args = {

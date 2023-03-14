@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import Pagination from './components/Pagination';
 import SearchBar from './components/SearchBar';
 import TableHeader from './components/Table/TableHeader';
 import TableItems from './components/Table/TableItems';
@@ -23,29 +24,29 @@ const SearchBarContainer = styled.div`
 
 // for now
 const TableData = [{
-  name: "Akhilesh Kumar Pandey",
+  name: "1. Akhilesh Kumar Pandey",
   email: "akhilesh.pandey@unthinkable.co",
   phone: "9678453221",
-  country: "India",
+  country: "India, Delhi",
   timezone: "IST"
 }, {
-  name: "Akhilesh Kumar Pandey",
-  email: "akhilesh.pandey@unthinkable.co",
-  phone: "9678453221",
-  country: "India",
+  name: "2. Akshay Mann",
+  email: "akshay.mann@gmail.com",
+  phone: "8670013221",
+  country: "India, Chennai",
   timezone: "IST"
 }, {
-  name: "Akhilesh Kumar Pandey",
-  email: "akhilesh.pandey@unthinkable.co",
-  phone: "9678453221",
-  country: "India",
+  name: "3. Abhishek Mittal ",
+  email: "mittal.dude@gmail.com",
+  phone: "9638527410",
+  country: "India, Bangalore",
   timezone: "IST"
 },
 {
-  name: "Akhilesh Kumar Pandey",
-  email: "akhilesh.pandey@unthinkable.co",
-  phone: "9678453221",
-  country: "India",
+  name: "4. Rohit Jhangra",
+  email: "rohit.janghra@gmail.com",
+  phone: "7894561230",
+  country: "India, Mumbai",
   timezone: "IST"
 },
 ];
@@ -64,7 +65,16 @@ const SearchPage: FC<SearchPageProps> = (
         <SearchBar onSearchCb={onSearchActive} />
       </SearchBarContainer>
       <TableHeader columnNames={tableColumns} />
-      <TableItems tableData={TableData} columns={tableColumns} limit={singlePageRowsLimit} />
+      <Pagination
+        pageLimit={singlePageRowsLimit}
+        totalEntries={TableData.length}
+        uid={"p1"}>
+        <TableItems
+          tableData={TableData}
+          columns={tableColumns}
+          limit={singlePageRowsLimit}
+        />
+      </Pagination>
     </Wrapper>
   )
 };

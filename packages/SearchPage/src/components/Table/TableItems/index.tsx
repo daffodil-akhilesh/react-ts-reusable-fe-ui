@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
+import { PaginationContext } from '../../Pagination/PaginationContext';
 
 type TableDataProps = {
   name: string;
@@ -45,10 +46,13 @@ const TableItems: FC<TableItemsProps> = ({
   columns,
   limit,
 }) => {
+
+  const { startIndex, endIndex } = useContext(PaginationContext);
+
   return (
     <Wrapper>{
       tableData
-        .filter((_data: TableDataProps, index) => index < limit)
+        .filter((_data: TableDataProps, index) => ((index >= startIndex) && (index <= endIndex)))
         .map((data: TableDataProps) => (
           <TableItem>
             <TableItemColumn numCols={columns.length}>
