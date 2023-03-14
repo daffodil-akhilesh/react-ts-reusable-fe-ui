@@ -1,10 +1,13 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import constants from '../../constants';
 
+
 interface SearchBarProps {
-  width?: string,
-  height?: string,
+  width?: string;
+  height?: string;
+  debounceDelay?: number;
+  onSearchCb: (args: any) => void;
 }
 
 const Wrapper = styled.div<{ width: string; height: string; }>`
@@ -41,17 +44,34 @@ const SearchInput = styled.input`
 const SearchBar: FC<SearchBarProps> = ({
   width = "100%",
   height = "60px",
+  onSearchCb,
+  debounceDelay = 1,
 }) => {
   const { searchBarImg } = constants;
   const imgRef = useRef();
-  const inputRef = useRef();
+  const inputRef = useRef(null);
   const [isInputActive, setInputActive] = useState(false);
+  const [searchText, setSearchText] = useState('');
+
   const onFocusHandler = () => {
     setInputActive(true);
   }
   const onBlurHandler = () => {
     setInputActive(false);
   }
+  const onSearchInputChange = () => {
+    const target = inputRef.current;
+    setSearchText(target.value);
+  }
+  // SEARCH DEBOUNCE with 1s delay default
+  useEffect(() => {
+    if(inputRef.current.timer) clearTimeout(inputRef.current.timer);
+    inputRef.current.timer = setTimeout(() => {
+      onSearchCb(searchText);
+      clearTimeout(inputRef.current.timer);
+    }, debounceDelay * 1000);
+  },[searchText])
+
   return (
     <Wrapper width={width} height={height}>
       <SearchImg
@@ -62,7 +82,9 @@ const SearchBar: FC<SearchBarProps> = ({
         placeholder={"Search By Name"}
         ref={inputRef}
         onFocus={onFocusHandler}
-        onBlur={onBlurHandler} />
+        onBlur={onBlurHandler}
+        onChange={onSearchInputChange}
+      />
     </Wrapper>
   )
 };

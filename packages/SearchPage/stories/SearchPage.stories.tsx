@@ -12,7 +12,7 @@ export default {
 
 
 const SearchPageTemplate: ComponentStory<typeof SearchPage> = (args) => <SearchPage {...args} />;
-const SearchBarTemplate: ComponentStory<typeof SearchBar> = () => <SearchBar />;
+const SearchBarTemplate: ComponentStory<typeof SearchBar> = (args) => <SearchBar {...args} />;
 const TableHeaderTemplate: ComponentStory<typeof TableHeader> = (args) => <TableHeader {...args} />;
 const TableItemsTemplate: ComponentStory<typeof TableItems> = (args) => <TableItems {...args} />;
 
@@ -24,7 +24,10 @@ export const PrimaryTableItems = TableItemsTemplate.bind({});
 PrimarySearchPage.args = {
   url: "",
   tableColumns: ['Details', 'Phone Number', 'Country', 'Zone'],
-  singlePageRowsLimit: 20,
+  singlePageRowsLimit: 2,
+  onSearchActive: (searchText) => {
+    console.log("From Search Page", searchText); 
+  } 
 };
 
 PrimaryTableHeader.args = {
@@ -52,4 +55,10 @@ PrimaryTableItems.args = {
     timezone: "IST"
   }],
   columns: ['Details', 'Phone Number', 'Country', 'Zone'],
+}
+
+PrimarySearchBar.args = {
+  onSearchCb: (searchText) => {
+    console.log("From Search Bar cb", searchText);
+  }
 }

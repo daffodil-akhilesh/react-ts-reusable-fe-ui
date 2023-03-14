@@ -8,6 +8,7 @@ interface SearchPageProps {
   url: string;
   tableColumns: string[];
   singlePageRowsLimit: number;
+  onSearchActive: (args: any) => any;
 }
 
 const Wrapper = styled.div`
@@ -53,16 +54,17 @@ const SearchPage: FC<SearchPageProps> = (
   {
     url,
     tableColumns,
-    singlePageRowsLimit
+    singlePageRowsLimit,
+    onSearchActive,
   }
 ) => {
   return (
     <Wrapper>
       <SearchBarContainer>
-        <SearchBar />
+        <SearchBar onSearchCb={onSearchActive} />
       </SearchBarContainer>
       <TableHeader columnNames={tableColumns} />
-      <TableItems tableData={TableData} columns={tableColumns} />
+      <TableItems tableData={TableData} columns={tableColumns} limit={singlePageRowsLimit} />
     </Wrapper>
   )
 };

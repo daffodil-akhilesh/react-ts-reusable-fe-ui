@@ -11,8 +11,9 @@ type TableDataProps = {
 }
 
 interface TableItemsProps {
-  tableData: Array<TableDataProps>
-  columns: string[],
+  tableData: Array<TableDataProps>;
+  columns: string[];
+  limit: number;
 }
 
 const Wrapper = styled.div`
@@ -42,25 +43,28 @@ const TableItemColumn = styled.div<{ numCols: number }>`
 const TableItems: FC<TableItemsProps> = ({
   tableData,
   columns,
+  limit,
 }) => {
   return (
     <Wrapper>{
-      tableData.map((data: TableDataProps) => (
-        <TableItem>
-          <TableItemColumn numCols={columns.length}>
-            {data.name}
-          </TableItemColumn>
-          <TableItemColumn numCols={columns.length}>
-            {data.phone}
-          </TableItemColumn>
-          <TableItemColumn numCols={columns.length}>
-            {data.country}
-          </TableItemColumn>
-          <TableItemColumn numCols={columns.length}>
-            {data.timezone}
-          </TableItemColumn>
-        </TableItem>
-      ))
+      tableData
+        .filter((_data: TableDataProps, index) => index < limit)
+        .map((data: TableDataProps) => (
+          <TableItem>
+            <TableItemColumn numCols={columns.length}>
+              {data.name}
+            </TableItemColumn>
+            <TableItemColumn numCols={columns.length}>
+              {data.phone}
+            </TableItemColumn>
+            <TableItemColumn numCols={columns.length}>
+              {data.country}
+            </TableItemColumn>
+            <TableItemColumn numCols={columns.length}>
+              {data.timezone}
+            </TableItemColumn>
+          </TableItem>
+        ))
     }</Wrapper>
   )
 };
