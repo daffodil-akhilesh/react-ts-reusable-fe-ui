@@ -26,7 +26,7 @@ const PaginationFooter: FC<PaginationFooterProps> = ({
   return (
     <Wrapper>
       <div onClick={goToPrevPage}>Prev</div>
-      <div>{currentPage[uid]}</div>
+      <div>{currentPage[uid] + 1}</div>
       <div onClick={goToNextPage}>Next</div>
     </Wrapper>
   )
