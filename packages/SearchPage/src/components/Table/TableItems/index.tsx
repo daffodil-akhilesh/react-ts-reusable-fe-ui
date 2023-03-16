@@ -57,11 +57,11 @@ const TableItems: FC<TableItemsProps> = ({
     <Wrapper>{
       tableData
         .filter((_data: any, index) => ((index >= startIndex) && (index <= endIndex)))
-        .map((data: any) => (
-          <TableItem>
+        .map((data: any, index) => (
+          <TableItem key={index}>
             {
-              columns.map((column) => (
-                <TableItemColumn numCols={columns.length}>
+              columns.map((column, index) => (
+                <TableItemColumn numCols={columns.length} key={index}>
                   {data[column]}
                 </TableItemColumn>
               ))

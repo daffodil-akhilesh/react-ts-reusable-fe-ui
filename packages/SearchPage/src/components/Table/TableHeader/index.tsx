@@ -27,8 +27,8 @@ const TableHeader: FC<TableHeaderProps> = ({
 }: TableHeaderProps) => {
   return (
     <Wrapper>{
-      columnNames.map((colName: string) => (
-        <Column numCols={columnNames.length}>
+      columnNames.map((colName: string, index) => (
+        <Column numCols={columnNames.length} key={index}>
           {colName.toUpperCase()}
         </Column>
       ))
