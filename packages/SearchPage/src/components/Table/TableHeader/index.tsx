@@ -29,7 +29,7 @@ const TableHeader: FC<TableHeaderProps> = ({
     <Wrapper>{
       columnNames.map((colName: string) => (
         <Column numCols={columnNames.length}>
-          {colName}
+          {colName.toUpperCase()}
         </Column>
       ))
     }</Wrapper>

@@ -2,17 +2,8 @@ import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { PaginationContext } from '../../Pagination/PaginationContext';
 
-type TableDataProps = {
-  name: string;
-  email: string;
-  profilePic?: string;
-  country: string;
-  phone: string;
-  timezone: string;
-}
-
 interface TableItemsProps {
-  tableData: Array<TableDataProps>;
+  tableData: Array<any>;
   columns: string[];
   limit: number;
 }
@@ -47,26 +38,34 @@ const TableItems: FC<TableItemsProps> = ({
   limit,
 }) => {
 
-  const { startIndex, endIndex } = useContext(PaginationContext);
+  const _defaults = { startIndex: 0, endIndex: limit };
+  let {startIndex, endIndex} = useContext(PaginationContext) || _defaults;  
 
-  return (
+  if (!tableData.length) {
+    return (
+      <Wrapper>
+        <TableItem>
+          <TableItemColumn numCols={1}>
+            No Results Found!
+          </TableItemColumn>
+        </TableItem>
+      </Wrapper>
+    );
+  }
+
+  else return (
     <Wrapper>{
       tableData
-        .filter((_data: TableDataProps, index) => ((index >= startIndex) && (index <= endIndex)))
-        .map((data: TableDataProps) => (
+        .filter((_data: any, index) => ((index >= startIndex) && (index <= endIndex)))
+        .map((data: any) => (
           <TableItem>
-            <TableItemColumn numCols={columns.length}>
-              {data.name}
-            </TableItemColumn>
-            <TableItemColumn numCols={columns.length}>
-              {data.phone}
-            </TableItemColumn>
-            <TableItemColumn numCols={columns.length}>
-              {data.country}
-            </TableItemColumn>
-            <TableItemColumn numCols={columns.length}>
-              {data.timezone}
-            </TableItemColumn>
+            {
+              columns.map((column) => (
+                <TableItemColumn numCols={columns.length}>
+                  {data[column]}
+                </TableItemColumn>
+              ))
+            }
           </TableItem>
         ))
     }</Wrapper>

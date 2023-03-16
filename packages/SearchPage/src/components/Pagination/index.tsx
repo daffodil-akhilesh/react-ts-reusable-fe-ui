@@ -26,7 +26,7 @@ const Pagination: FC<PaginationProps> = ({
       <PaginationContextProvider
         uid={uid}
         defaultPage={defaultPage}
-        totalPages={Number(totalEntries / pageLimit)}
+        totalPages={Number((totalEntries / pageLimit).toFixed())}
         pageLimit={pageLimit}
       >
           {children}

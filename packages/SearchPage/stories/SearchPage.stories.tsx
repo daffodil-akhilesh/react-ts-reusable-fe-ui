@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import SearchPage from '../src';
 import SearchBar from "../src/components/SearchBar";
@@ -10,24 +10,59 @@ export default {
   component: SearchPage,
 } as ComponentMeta<typeof SearchPage>;
 
+const SearchPageComponent = () => {
+  const [search, setSearch] = useState("mario");
+  const onSearch = (searchText) => {
+    setSearch(searchText);
+  }
+  return (
+    <SearchPage
+      url={"https://www.amiiboapi.com/api/amiibo/"}
+      searchParams={[
+        {
+          key1: "name",
+          value1: search
+        },
+      ]}
+      responseDataKey="amiibo"
+      tableColumns={['name', 'amiiboSeries', 'gameSeries', 'character']}
+      singlePageRowsLimit={5}
+      onSearchActive={onSearch}
+      uid={"p2"}
+    />
+  );
+}
+
 
 const SearchPageTemplate: ComponentStory<typeof SearchPage> = (args) => <SearchPage {...args} />;
 const SearchBarTemplate: ComponentStory<typeof SearchBar> = (args) => <SearchBar {...args} />;
 const TableHeaderTemplate: ComponentStory<typeof TableHeader> = (args) => <TableHeader {...args} />;
 const TableItemsTemplate: ComponentStory<typeof TableItems> = (args) => <TableItems {...args} />;
+const SearchPageComponentTemplate: ComponentStory<typeof SearchPageComponent> = () => <SearchPageComponent />;
 
 export const PrimarySearchPage = SearchPageTemplate.bind({});
 export const PrimarySearchBar = SearchBarTemplate.bind({});
 export const PrimaryTableHeader = TableHeaderTemplate.bind({});
 export const PrimaryTableItems = TableItemsTemplate.bind({});
+export const PrimarySearchPageComponent = SearchPageComponentTemplate.bind({});
 
 PrimarySearchPage.args = {
-  url: "",
-  tableColumns: ['Details', 'Phone Number', 'Country', 'Zone'],
-  singlePageRowsLimit: 2,
+  url: "https://www.amiiboapi.com/api/amiibo/",
+  searchParams: [
+    {
+      key1: "name",
+      value1: "zelda"
+    },
+  ],
+  responseDataKey: "amiibo",
+  tableColumns: ['name','amiiboSeries', 'gameSeries', 'character'],
+  singlePageRowsLimit: 5,
   onSearchActive: (searchText) => {
-    console.log("From Search Page", searchText); 
-  } 
+    // change your Search Text Here via Local State and pass search term 
+    // through searchParams
+    console.log("From Search Page", searchText);
+  },
+  uid:"p1",
 };
 
 PrimaryTableHeader.args = {
@@ -54,7 +89,7 @@ PrimaryTableItems.args = {
     country: "India",
     timezone: "IST"
   }],
-  columns: ['Details', 'Phone Number', 'Country', 'Zone'],
+  columns: ['name', 'email', 'phone', 'country','timezone'],
   limit: 3,
 }
 
