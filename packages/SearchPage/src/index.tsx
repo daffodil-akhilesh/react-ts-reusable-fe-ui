@@ -9,7 +9,7 @@ import TableItems from './components/Table/TableItems';
 interface SearchPageProps {
   url: string;
   searchParams: Array<{ [key: string]: string }>;
-  responseDataKey: string;
+  responseDataKey: string | null | undefined;
   tableColumns: string[];
   singlePageRowsLimit: number;
   onSearchActive: (args: any) => any;
@@ -63,7 +63,9 @@ const SearchPage: FC<SearchPageProps> = (
         "Content-Type": "application/json",
       }
     }).then((response) => {
-      setTableData(response.data[responseDataKey]);
+      const data = !responseDataKey ? response.data : response.data[responseDataKey];
+      console.log(data);
+      setTableData(data);
       setIsLoading(false);
     }).catch((error) => {
       setTableData([]);

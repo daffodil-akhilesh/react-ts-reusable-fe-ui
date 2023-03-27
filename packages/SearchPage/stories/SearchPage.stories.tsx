@@ -17,15 +17,15 @@ const SearchPageComponent = () => {
   }
   return (
     <SearchPage
-      url={"https://www.amiiboapi.com/api/amiibo/"}
+      url={"https://digimoncard.io/api-public/search.php"}
       searchParams={[
         {
-          key1: "name",
+          key1: "n",
           value1: search
         },
       ]}
-      responseDataKey="amiibo"
-      tableColumns={['name', 'amiiboSeries', 'gameSeries', 'character']}
+      responseDataKey={null}
+      tableColumns={['name', 'type', 'color', 'stage','digi_type']}
       singlePageRowsLimit={5}
       onSearchActive={onSearch}
       uid={"p2"}
