@@ -3,7 +3,7 @@ import styled , { keyframes } from 'styled-components';
 
 interface CircularLoaderProps{
   isLoading: boolean;
-  diameter?: string;
+  diameter?: number;
 }
 
 const Wrapper = styled.div`
@@ -33,10 +33,10 @@ const Rotation = keyframes`
   }
 `
 
-const Circle = styled.div<{ diameter: string;}>`
+const Circle = styled.div<{ diameter: number;}>`
   border-radius: 100%;
-  width: ${({ diameter }) => diameter};
-  height: ${({ diameter }) => diameter};
+  width: ${({ diameter }) => `${diameter}px`};
+  height: ${({ diameter }) => `${diameter}px`};
   border: 1px solid #00000b;
   box-sizing: border-box;
 `;
@@ -49,7 +49,7 @@ const SemiCircle = styled(Circle)`
 
 const CircularLoader: FC<CircularLoaderProps> = ({
   isLoading,
-  diameter = "60px",
+  diameter = 60,
 }) => {
 
   if (!isLoading) return;

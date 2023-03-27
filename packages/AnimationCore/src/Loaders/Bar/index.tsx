@@ -5,7 +5,7 @@ interface BarLoaderProps {
   isLoading: boolean;
   foregroundClr?: string;
   backgroundClr?: string;
-  height?: string;
+  height?: number;
 }
 
 
@@ -32,9 +32,9 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const BarCnt = styled.div<{ barHeight: string; }>`
+const BarCnt = styled.div<{ barHeight: number; }>`
   position: relative;
-  height: ${({ barHeight }) => barHeight};
+  height: ${({ barHeight }) => `${barHeight}px`};
   width: 100%;
   overflow: hidden;
 `;
@@ -59,7 +59,7 @@ const BarLoader: FC<BarLoaderProps> = ({
   isLoading,
   foregroundClr = "#c92578",
   backgroundClr = "#c92578ab",
-  height = '8px',
+  height = 8,
 }) => {
   if (!isLoading) return;
   
