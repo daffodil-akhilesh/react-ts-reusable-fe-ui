@@ -16,6 +16,6 @@ const Column = styled.div `
   padding: 10px 0px;  
 `;
 const TableHeader = ({ columnNames, }) => {
-    return (React.createElement(Wrapper, null, columnNames.map((colName) => (React.createElement(Column, { numCols: columnNames.length }, colName)))));
+    return (React.createElement(Wrapper, null, columnNames.map((colName, index) => (React.createElement(Column, { numCols: columnNames.length, key: index }, colName.toUpperCase())))));
 };
 export default TableHeader;

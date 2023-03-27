@@ -23,13 +23,16 @@ const TableItemColumn = styled.div `
   align-items: center;
 `;
 const TableItems = ({ tableData, columns, limit, }) => {
-    const { startIndex, endIndex } = useContext(PaginationContext);
-    return (React.createElement(Wrapper, null, tableData
-        .filter((_data, index) => ((index >= startIndex) && (index <= endIndex)))
-        .map((data) => (React.createElement(TableItem, null,
-        React.createElement(TableItemColumn, { numCols: columns.length }, data.name),
-        React.createElement(TableItemColumn, { numCols: columns.length }, data.phone),
-        React.createElement(TableItemColumn, { numCols: columns.length }, data.country),
-        React.createElement(TableItemColumn, { numCols: columns.length }, data.timezone))))));
+    const _defaults = { startIndex: 0, endIndex: limit };
+    let { startIndex, endIndex } = useContext(PaginationContext) || _defaults;
+    if (!tableData.length) {
+        return (React.createElement(Wrapper, null,
+            React.createElement(TableItem, null,
+                React.createElement(TableItemColumn, { numCols: 1 }, "No Results Found!"))));
+    }
+    else
+        return (React.createElement(Wrapper, null, tableData
+            .filter((_data, index) => ((index >= startIndex) && (index <= endIndex)))
+            .map((data, index) => (React.createElement(TableItem, { key: index }, columns.map((column, index) => (React.createElement(TableItemColumn, { numCols: columns.length, key: index }, data[column]))))))));
 };
 export default TableItems;

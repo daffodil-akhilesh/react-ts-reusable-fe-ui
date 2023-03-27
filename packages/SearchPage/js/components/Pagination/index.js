@@ -6,7 +6,7 @@ const Wrapper = styled.div `
 `;
 const Pagination = ({ children, pageLimit, totalEntries, uid, defaultPage, }) => {
     return (React.createElement(Wrapper, null,
-        React.createElement(PaginationContextProvider, { uid: uid, defaultPage: defaultPage, totalPages: Number(totalEntries / pageLimit), pageLimit: pageLimit },
+        React.createElement(PaginationContextProvider, { uid: uid, defaultPage: defaultPage, totalPages: Number((totalEntries / pageLimit).toFixed()), pageLimit: pageLimit },
             children,
             React.createElement(PaginationFooter, { uid: uid }))));
 };
